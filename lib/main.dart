@@ -2,6 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:immo_result/immoObjects/immoObjects.dart';
 
+
 void main() => runApp(MaterialApp(
       theme: ThemeData(fontFamily: 'MakeItSans'),
       initialRoute: '/search',
@@ -9,6 +10,7 @@ void main() => runApp(MaterialApp(
         '/search': (context) => SearchScreen(),
         '/results': (context) => ResultsScreen(),
         '/details': (context) => DetailsScreen(),
+
       },
     ));
 
@@ -58,11 +60,73 @@ class ResultsScreen extends StatefulWidget {
 
 class _ResultsScreenState extends State<ResultsScreen> {
   @override
+  //for navigationWithoutCurve
+  int _selectedPage = 0;
+  final _pageOptions = [
+    Text('Item 1'),
+    Text('Item 2'),
+    Text('Item 3'),
+    Text('Item 4'),
+  ];
+
   //World Map - Pilot Object
   Widget worldMap = new Container(
+    child: Image(
+        image: AssetImage('assets/map/example.png'), fit: BoxFit.fitWidth),
     height: 175.0,
-    color: Colors.green,
   );
+
+  //CurvedNavigationBar
+  Widget navigationBarWithCurves = new CurvedNavigationBar(
+    color: Colors.white,
+    backgroundColor: Color(0xff00ffd0),
+    buttonBackgroundColor: Color(0xff00ffd0),
+    //Color(0xff00ffd0)
+    height: 70,
+    items: <Widget>[
+      Icon(Icons.search, size: 20, color: Colors.black),
+      Icon(Icons.favorite, size: 20, color: Colors.black),
+      Icon(Icons.list, size: 20, color: Colors.black),
+      Icon(Icons.account_box, size: 20, color: Colors.black),
+    ],
+    animationDuration: Duration(milliseconds: 200),
+    animationCurve: Curves.bounceInOut,
+    onTap: (index) {
+      debugPrint("Current Index is $index");
+    },
+  );
+
+  //
+
+  Widget navigationWithoutCurve = new BottomNavigationBar(
+      /*
+    currentIndex: _selectedPage,
+          onTap: (int index){
+            setState((){
+              _selectedPage = index;
+            });
+          },
+     */
+      items: [
+        BottomNavigationBarItem(
+            icon: Icon(Icons.search, color: Color(0xff333333)),
+            title: Text(
+              'Search',
+              style: TextStyle(color: Colors.black),
+            )),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.favorite, color: Color(0xff00ffd0)),
+            title: Text(
+              'Fav',
+              style: TextStyle(color: Colors.black),
+            )),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.account_box, color: Color(0xff333333)),
+            title: Text(
+              'Profile',
+              style: TextStyle(color: Colors.black),
+            )),
+      ]);
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -121,24 +185,11 @@ class _ResultsScreenState extends State<ResultsScreen> {
               )),
         ),
       ),
-      bottomNavigationBar: CurvedNavigationBar(
-        color: Colors.white,
-        backgroundColor: Color(0xff00ffd0),
-        buttonBackgroundColor: Color(0xff00ffd0),
-        //Color(0xff00ffd0)
-        height: 70,
-        items: <Widget>[
-          Icon(Icons.search, size: 20, color: Colors.black),
-          Icon(Icons.favorite, size: 20, color: Colors.black),
-          Icon(Icons.list, size: 20, color: Colors.black),
-          Icon(Icons.account_box, size: 20, color: Colors.black),
-        ],
-        animationDuration: Duration(milliseconds: 200),
-        animationCurve: Curves.bounceInOut,
-        onTap: (index) {
-          debugPrint("Current Index is $index");
-        },
-      ),
+
+      bottomNavigationBar: navigationWithoutCurve,
+      //navigationWithoutCurve
+
+
       body: ListView(
         children: <Widget>[
           SizedBox(

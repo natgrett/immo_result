@@ -27,11 +27,57 @@ class _ImmoObjectsState extends State<ImmoObjects> {
     },
 
      */
-    {"name": "965,000 €", "image": "assets/objects/2.png", "value": "teuer"},
-    {"name": "345,788 €", "image": "assets/objects/3.png", "value": "teuer"},
-    {"name": "324,086 €", "image": "assets/objects/4.png", "value": "teuer"},
-    {"name": "399,449 €", "image": "assets/objects/5.png", "value": "teuer"},
-    {"name": "498,990 €", "image": "assets/objects/6.png", "value": "teuer"},
+    //{"name": "", "image": "assets/map/example.png", "value": ""},
+    {
+      "id": "1",
+      "price": "965,000 €",
+      "image": "assets/objects/2.png",
+      "value": "teuer",
+      "quantity": "6,325 €/m2 ",
+      "rentTrend": "4.1%",
+      "priceTrend": "9.6%",
+      "prodAddress": "12169 Berlin, Steglitz",
+    },
+    {
+      "id": "2",
+      "price": "345,788 €",
+      "image": "assets/objects/3.png",
+      "value": "teuer",
+      "quantity": "6,325 €/m2 ",
+      "rentTrend": "4.1%",
+      "priceTrend": "9.6%",
+      "prodAddress": "12169 Berlin, Steglitz",
+    },
+    {
+      "id": "3",
+      "price": "324,086 €",
+      "image": "assets/objects/4.png",
+      "value": "teuer",
+      "quantity": "6,325 €/m2 ",
+      "rentTrend": "4.1%",
+      "priceTrend": "9.6%",
+      "prodAddress": "12169 Berlin, Steglitz",
+    },
+    {
+      "id": "4",
+      "price": "399,449 €",
+      "image": "assets/objects/5.png",
+      "value": "teuer",
+      "quantity": "6,325 €/m2 ",
+      "rentTrend": "4.1%",
+      "priceTrend": "9.6%",
+      "prodAddress": "12169 Berlin, Steglitz",
+    },
+    {
+      "id": "5",
+      "price": "498,990 €",
+      "image": "assets/objects/6.png",
+      "value": "teuer",
+      "quantity": "6,325 €/m2 ",
+      "rentTrend": "4.1%",
+      "priceTrend": "9.6%",
+      "prodAddress": "12169 Berlin, Steglitz",
+    },
   ];
 
   @override
@@ -45,53 +91,93 @@ class _ImmoObjectsState extends State<ImmoObjects> {
       ),
       itemBuilder: (BuildContext context, int index) {
         return SingleObject(
-          prodName: productList[index]['name'],
-          prodValue: productList[index]['value'],
-          prodImage: productList[index]['image'],
-        );
+            prodId: productList[index]['id'],
+            prodPrice: productList[index]['price'],
+            prodValue: productList[index]['value'],
+            prodImage: productList[index]['image'],
+            prodQuantity: productList[index]['quantity'],
+            prodRentTrend: productList[index]['rentTrend'],
+            prodPriceTrend: productList[index]['priceTrend'],
+            prodAddress: productList[index]['prodAddress']);
       },
     );
   }
 }
 
 class SingleObject extends StatelessWidget {
-  final prodName;
+  final prodId;
+  final prodPrice;
   final prodImage;
   final prodValue;
+  final prodQuantity;
+  final prodRentTrend;
+  final prodPriceTrend;
+  final prodAddress;
 
-  SingleObject({this.prodImage, this.prodName, this.prodValue});
+  SingleObject({
+    this.prodId,
+    this.prodImage,
+    this.prodPrice,
+    this.prodValue,
+    this.prodQuantity,
+    this.prodRentTrend,
+    this.prodPriceTrend,
+    this.prodAddress,
+  });
+
+  final bool alreadySaved = false;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Hero(
-        tag: prodName,
+        tag: prodId,
         child: Material(
           child: InkWell(
               onTap: () {},
               child: GridTile(
                 footer: Container(
-                    width: MediaQuery.of(context).size.width,
-                    color: Colors.white,
-                    child: ListTile(
-                      //Card https://flutter.dev/docs/development/ui/layout#gridview
-                      contentPadding:
-                          EdgeInsets.symmetric(vertical: 0.0, horizontal: 16.0),
-                      dense: true,
-                      leading: new Text(
-                        prodName,
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      title: Text(
-                        prodValue,
+                  width: MediaQuery.of(context).size.width,
+                  color: Colors.white,
+                  child: ListTile(
+                    //Card https://flutter.dev/docs/development/ui/layout#gridview
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 0.0, horizontal: 20.0),
+                    dense: true,
+                    title: new Text.rich(TextSpan(
+                        text: '$prodPrice                   ',
                         style: TextStyle(
-                            color: Colors.green,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16.0),
-                      ),
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: prodQuantity,
+                            style: TextStyle(
+                                fontSize: 13, color: Color(0xff5c5c5c)),
+                          ),
+                        ])),
+                    subtitle: Text(
+                      prodAddress,
+                    ),
 
-                      subtitle: Text('3,642 €/m²'),
-                    )),
+                    trailing: Wrap(
+                      spacing: 12, // space between two icons
+                      children: <Widget>[
+                        Text(
+                          prodValue,
+                          textAlign: TextAlign.end,
+                          style: TextStyle(
+                              color: Colors.green,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16.0),
+                        ), // icon-1
+                        Icon(
+                          Icons.favorite_border,
+                        ), // icon-2
+                      ],
+                    ),
+                    onTap: () {},
+                  ),
+                ),
                 child: GestureDetector(
                   onTap: () {
                     Navigator.pushNamed(context, '/details');
@@ -104,4 +190,3 @@ class SingleObject extends StatelessWidget {
     );
   }
 }
-

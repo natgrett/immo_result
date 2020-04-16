@@ -21,6 +21,9 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  cupertino_icons: ^0.1.0
+  english_words: ^3.1.0
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -46,6 +49,7 @@ flutter:
     - assets/objects/4.png
     - assets/objects/5.png
     - assets/objects/6.png
+    - assets/map/example.png
 
 
 
