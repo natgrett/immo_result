@@ -27,12 +27,20 @@ class _ImmoObjectsState extends State<ImmoObjects> {
     },
 
      */
-    //{"name": "", "image": "assets/map/example.png", "value": ""},
+    {"id": "6",
+      "price": "",
+      "image":"assets/map/example2.png",
+      "value": "",
+      "quantity": "",
+      "rentTrend": "",
+      "priceTrend": "",
+      "prodAddress": "",
+    },
     {
       "id": "1",
       "price": "965,000 €",
       "image": "assets/objects/2.png",
-      "value": "teuer",
+      "value": "GUTES ANGEBOT",
       "quantity": "6,325 €/m2 ",
       "rentTrend": "4.1%",
       "priceTrend": "9.6%",
@@ -42,7 +50,7 @@ class _ImmoObjectsState extends State<ImmoObjects> {
       "id": "2",
       "price": "345,788 €",
       "image": "assets/objects/3.png",
-      "value": "teuer",
+      "value": "TEUER",
       "quantity": "6,325 €/m2 ",
       "rentTrend": "4.1%",
       "priceTrend": "9.6%",
@@ -52,7 +60,7 @@ class _ImmoObjectsState extends State<ImmoObjects> {
       "id": "3",
       "price": "324,086 €",
       "image": "assets/objects/4.png",
-      "value": "teuer",
+      "value": "ETWAS TEUER",
       "quantity": "6,325 €/m2 ",
       "rentTrend": "4.1%",
       "priceTrend": "9.6%",
@@ -62,7 +70,7 @@ class _ImmoObjectsState extends State<ImmoObjects> {
       "id": "4",
       "price": "399,449 €",
       "image": "assets/objects/5.png",
-      "value": "teuer",
+      "value": "FAIRES ANGEBOT",
       "quantity": "6,325 €/m2 ",
       "rentTrend": "4.1%",
       "priceTrend": "9.6%",
@@ -125,7 +133,12 @@ class SingleObject extends StatelessWidget {
     this.prodAddress,
   });
 
-  final bool alreadySaved = false;
+  //World Map - Pilot Object
+  Widget worldMap = new Container(
+    child: Image(
+        image: AssetImage('assets/map/example2.png'), fit: BoxFit.fitWidth),
+    height: 175.0,
+  );
 
   @override
   Widget build(BuildContext context) {

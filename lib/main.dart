@@ -2,7 +2,6 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:immo_result/immoObjects/immoObjects.dart';
 
-
 void main() => runApp(MaterialApp(
       theme: ThemeData(fontFamily: 'MakeItSans'),
       initialRoute: '/search',
@@ -10,11 +9,10 @@ void main() => runApp(MaterialApp(
         '/search': (context) => SearchScreen(),
         '/results': (context) => ResultsScreen(),
         '/details': (context) => DetailsScreen(),
-
       },
     ));
+///////////////////////////////////////////////////1. First Screen - Pilot Object//////////////////////////////
 
-//1. First Screen - Pilot Object
 class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -49,8 +47,8 @@ class SearchScreen extends StatelessWidget {
     );
   }
 }
+/////////////////////////////////////////////////////2. Second Screen - Results List//////////////////////////////
 
-//2. Second Screen - Results List
 class ResultsScreen extends StatefulWidget {
   ResultsScreen({Key key}) : super(key: key);
 
@@ -72,7 +70,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
   //World Map - Pilot Object
   Widget worldMap = new Container(
     child: Image(
-        image: AssetImage('assets/map/example.png'), fit: BoxFit.fitWidth),
+        image: AssetImage('assets/map/example2.png'), fit: BoxFit.fitWidth),
     height: 175.0,
   );
 
@@ -130,13 +128,13 @@ class _ResultsScreenState extends State<ResultsScreen> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffd6d6d6),
+      backgroundColor: Colors.grey[50],
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(65.0),
         child: AppBar(
           elevation: 0.0,
           bottomOpacity: 10.0,
-          backgroundColor: Color(0xff33ffd9),
+          backgroundColor: Colors.white,
           leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Color(0xff333333)),
             onPressed: () => Navigator.pop(context),
@@ -152,15 +150,15 @@ class _ResultsScreenState extends State<ResultsScreen> {
           title: Container(
               margin: EdgeInsets.symmetric(horizontal: 40.0, vertical: 5.0),
               decoration: BoxDecoration(
-                color: Color.fromARGB(120, 255, 255, 255),
-                borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                color: Color.fromARGB(200, 240, 240, 240),
+                borderRadius: BorderRadius.all(Radius.circular(10.0)),
               ),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Expanded(
-                      flex: 1,
-                      child: TextFormField(
+                    flex: 1,
+                    child:  TextFormField(
                         textAlign: TextAlign.center,
                         decoration: InputDecoration(
                           border: InputBorder.none,
@@ -168,36 +166,24 @@ class _ResultsScreenState extends State<ResultsScreen> {
                           hintStyle: TextStyle(color: Color(0xff333333)),
                           //icon: Icon(Icons.search, color: Color(0xff333333)),
                         ),
-                      )),
-                  /*Expanded(
-                  flex: 0,
-                  child: Row(
-                    children: <Widget>[
-                      */ /*IconButton(
-                        onPressed: (){},
-                        icon: Icon(Icons.mic, color: Color(0xff333333)),
-                      ),*/ /*
-                      VerticalDivider(color: Color(0xff333333)),
-                    ],
-                  )
-                )*/
+                      ),
+
+                  ),
                 ],
               )),
         ),
       ),
 
       bottomNavigationBar: navigationWithoutCurve,
-      //navigationWithoutCurve
-
+      //navigationWithoutCurve,
 
       body: ListView(
         children: <Widget>[
           SizedBox(
-            height: 5.0,
+            height: 2.0,
           ),
-          worldMap,
           Container(
-            height: (MediaQuery.of(context).size.height / 1.7),
+            height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             child: ImmoObjects(),
           ),
@@ -206,8 +192,8 @@ class _ResultsScreenState extends State<ResultsScreen> {
     );
   }
 }
+//////////////////////////////////////////////////////3.Third Screen (Details) - Pilot Object//////////////////////////////
 
-//3.Third Screen (Details) - Pilot Object
 class DetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -220,8 +206,14 @@ class DetailsScreen extends StatelessWidget {
         backgroundColor: Color(0xff66ffe3),
       ),
       body: Center(
-        child: Image(
+        child: Hero (
+          tag: '1',
+          child: Image(
+              image: AssetImage('assets/objects/5.png'), fit: BoxFit.fitWidth),
+        ),
+        /*Image(
             image: AssetImage('assets/objects/5.png'), fit: BoxFit.fitWidth),
+            */
       ),
     );
   }
