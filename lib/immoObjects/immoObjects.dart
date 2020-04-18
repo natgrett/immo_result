@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../detailsScreen.dart';
 import '../main.dart';
 
 class ImmoObjects extends StatefulWidget {
@@ -19,7 +20,7 @@ class _ImmoObjectsState extends State<ImmoObjects> {
       //second line
       "netYeld" : "2.2%",
       "rentTrend" : "4.1%",
-      "priceTrend" : "9.6%",
+      "priceTrend" : "9.6%"
       //right side
       "value" : "etwas teuer",
       //not represented
@@ -211,7 +212,7 @@ Route _createRoute() {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => DetailsScreen(),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      var begin = Offset(1.0, 1.0);
+      var begin = Offset(0.0, 1.0);
       var end = Offset.zero;
       var curve = Curves.ease;
 
