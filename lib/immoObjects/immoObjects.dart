@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../main.dart';
+
 class ImmoObjects extends StatefulWidget {
   ImmoObjects({Key key}) : super(key: key);
 
@@ -27,9 +29,10 @@ class _ImmoObjectsState extends State<ImmoObjects> {
     },
 
      */
-    {"id": "6",
+    {
+      "id": "6",
       "price": "",
-      "image":"assets/map/example2.png",
+      "image": "assets/map/example2.png",
       "value": "",
       "quantity": "",
       "rentTrend": "",
@@ -40,7 +43,7 @@ class _ImmoObjectsState extends State<ImmoObjects> {
       "id": "1",
       "price": "965,000 €",
       "image": "assets/objects/2.png",
-      "value": "GUTES ANGEBOT",
+      "value": "TEUER",
       "quantity": "6,325 €/m2 ",
       "rentTrend": "4.1%",
       "priceTrend": "9.6%",
@@ -158,7 +161,7 @@ class SingleObject extends StatelessWidget {
                         EdgeInsets.symmetric(vertical: 0.0, horizontal: 20.0),
                     dense: true,
                     title: new Text.rich(TextSpan(
-                        text: '$prodPrice                   ',
+                        text: '$prodPrice                 ',
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold),
                         children: <TextSpan>[
@@ -193,7 +196,7 @@ class SingleObject extends StatelessWidget {
                 ),
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, '/details');
+                    Navigator.of(context).push(_createRoute());
                   },
                   child: Image.asset(prodImage, fit: BoxFit.fitWidth),
                 ),
@@ -202,4 +205,37 @@ class SingleObject extends StatelessWidget {
       ),
     );
   }
+}
+
+Route _createRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => DetailsScreen(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      var begin = Offset(1.0, 1.0);
+      var end = Offset.zero;
+      var curve = Curves.ease;
+
+      //Example1, using CurveTween
+      var curveTween = CurveTween(curve: curve);
+      var tween1 = Tween(begin: begin, end: end).chain(curveTween);
+      var slideTransition1 = SlideTransition(
+        position: animation.drive(tween1),
+        child: child,
+      );
+
+      //Example2, using CurvedAnimation
+      var curvedAnimation = CurvedAnimation (
+        parent: animation,
+        curve: curve,
+      );
+      var tween2 = Tween(begin: begin, end: end);
+      var slideTransition2 = SlideTransition(
+        position: tween2.animate(curvedAnimation),
+        child: child,
+      );
+
+
+      return slideTransition2;
+    },
+  );
 }

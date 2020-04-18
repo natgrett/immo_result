@@ -8,7 +8,8 @@ void main() => runApp(MaterialApp(
       routes: {
         '/search': (context) => SearchScreen(),
         '/results': (context) => ResultsScreen(),
-        '/details': (context) => DetailsScreen(),
+    '/details': (context) => DetailsScreen(),
+
       },
     ));
 ///////////////////////////////////////////////////1. First Screen - Pilot Object//////////////////////////////
@@ -58,19 +59,13 @@ class ResultsScreen extends StatefulWidget {
 
 class _ResultsScreenState extends State<ResultsScreen> {
   @override
-  //for navigationWithoutCurve
-  int _selectedPage = 0;
-  final _pageOptions = [
-    Text('Item 1'),
-    Text('Item 2'),
-    Text('Item 3'),
-    Text('Item 4'),
-  ];
 
   //World Map - Pilot Object
   Widget worldMap = new Container(
     child: Image(
-        image: AssetImage('assets/map/example2.png'), fit: BoxFit.fitWidth),
+        image: AssetImage('assets/map/example2.png'),
+        fit: BoxFit.fitWidth
+    ),
     height: 175.0,
   );
 
@@ -115,7 +110,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
         BottomNavigationBarItem(
             icon: Icon(Icons.favorite, color: Color(0xff00ffd0)),
             title: Text(
-              'Fav',
+              'Saved',
               style: TextStyle(color: Colors.black),
             )),
         BottomNavigationBarItem(
@@ -142,7 +137,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
           actions: <Widget>[
             IconButton(
               onPressed: () {},
-              icon: Icon(Icons.more_vert, color: Colors.black),
+              icon: Icon(Icons.swap_vert, color: Colors.black),
             )
           ],
 
@@ -162,7 +157,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
                         textAlign: TextAlign.center,
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: "Adjust Search",
+                          hintText: "🔍  Adjust Search",
                           hintStyle: TextStyle(color: Color(0xff333333)),
                           //icon: Icon(Icons.search, color: Color(0xff333333)),
                         ),
@@ -175,7 +170,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
       ),
 
       bottomNavigationBar: navigationWithoutCurve,
-      //navigationWithoutCurve,
+      //,,navigationBarWithCurves
 
       body: ListView(
         children: <Widget>[
@@ -195,6 +190,10 @@ class _ResultsScreenState extends State<ResultsScreen> {
 //////////////////////////////////////////////////////3.Third Screen (Details) - Pilot Object//////////////////////////////
 
 class DetailsScreen extends StatelessWidget {
+  final SingleObject object;
+
+  DetailsScreen({this.object});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -206,11 +205,10 @@ class DetailsScreen extends StatelessWidget {
         backgroundColor: Color(0xff66ffe3),
       ),
       body: Center(
-        child: Hero (
-          tag: '1',
+
           child: Image(
               image: AssetImage('assets/objects/5.png'), fit: BoxFit.fitWidth),
-        ),
+
         /*Image(
             image: AssetImage('assets/objects/5.png'), fit: BoxFit.fitWidth),
             */
@@ -218,3 +216,4 @@ class DetailsScreen extends StatelessWidget {
     );
   }
 }
+
