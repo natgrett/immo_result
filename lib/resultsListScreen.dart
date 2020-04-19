@@ -115,17 +115,19 @@ class SearchSheet extends StatelessWidget {
           child: Container(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
+              //padding: EdgeInsets.symmetric(vertical: 8.0),
               child: Material(//test
-                color: Colors.grey,
+                color: Colors.white,
                 elevation: 5.0,
                 borderRadius: BorderRadius.circular(3.0),
                 shadowColor: Colors.teal,
                 child: Column(
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.all(10.0),
+                      //padding: const EdgeInsets.all(10.0),
+                      padding: EdgeInsets.symmetric(horizontal: 0.0),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        //mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Container(
                             width: MediaQuery.of(context).size.width / 1.5,
@@ -144,6 +146,7 @@ class SearchSheet extends StatelessWidget {
                             ),
                           ),
                           Container(
+                            width: MediaQuery.of(context).size.width / 3.4,
                             height: 200.0,
                             color: Colors.white,
                             child: Column(
