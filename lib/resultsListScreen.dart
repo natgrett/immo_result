@@ -116,15 +116,16 @@ class SearchSheet extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Material(
-                color: Colors.white,
+                color: Colors.grey,
                 elevation: 5.0,
                 borderRadius: BorderRadius.circular(3.0),
                 shadowColor: Colors.teal,
                 child: Column(
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.all(1.0),
+                      padding: const EdgeInsets.all(10.0),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Container(
                             width: MediaQuery.of(context).size.width / 1.5,
@@ -142,41 +143,46 @@ class SearchSheet extends StatelessWidget {
                               },
                             ),
                           ),
-                          Column(
-                            children: <Widget>[
-                              Container(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(house.housePriceTrend,
-                                      style: TextStyle(
-                                          color: Colors.black, fontSize: 24.0)),
+                          Container(
+                            height: 200.0,
+                            color: Colors.white,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Container(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(house.housePriceTrend,
+                                        style: TextStyle(
+                                            color: Colors.black, fontSize: 24.0)),
+                                  ),
                                 ),
-                              ),
-                              Container(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text('Price Trend',
-                                      style: TextStyle(
-                                          color: Color(0xff5c5c5c), fontSize: 14.0)),
+                                Container(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text('Price Trend',
+                                        style: TextStyle(
+                                            color: Color(0xff5c5c5c), fontSize: 14.0)),
+                                  ),
                                 ),
-                              ),
-                              Container(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(house.houseRentTrend,
-                                      style: TextStyle(
-                                          color: Colors.black, fontSize: 24.0)),
+                                Container(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(house.houseRentTrend,
+                                        style: TextStyle(
+                                            color: Colors.black, fontSize: 24.0)),
+                                  ),
                                 ),
-                              ),
-                              Container(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text('Rent Trend',
-                                      style: TextStyle(
-                                          color: Color(0xff5c5c5c), fontSize: 14.0)),
+                                Container(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text('Rent Trend',
+                                        style: TextStyle(
+                                            color: Color(0xff5c5c5c), fontSize: 14.0)),
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ],
                       ),
