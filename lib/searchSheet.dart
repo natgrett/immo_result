@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'immoObjects/house.dart';
+import 'bars/buttomBars.dart';
 
 class SearchSheet extends StatelessWidget {
-  @override
+
+
+
+
   Widget build(BuildContext context) {
     createHouseImage(House house) => Hero(
           tag: house.houseId,
@@ -221,6 +225,8 @@ class SearchSheet extends StatelessWidget {
             foregroundColor: Colors.white,
             backgroundColor: Colors.amber,
           ),
+          bottomNavigationBar: new NavigationBarWithoutCurves(),
+          //,,navigationBarWithCurves,
         ),
       ),
     );
