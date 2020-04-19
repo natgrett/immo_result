@@ -10,7 +10,6 @@ class SearchSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-
     createHouseImage(House house) => Hero(
           tag: house.houseId,
           child: Column(
@@ -31,11 +30,10 @@ class SearchSheet extends StatelessWidget {
                           decoration: new BoxDecoration(
                             image: new DecorationImage(
                               image: AssetImage(house.houseImage),
-                              fit: BoxFit.fill,
+                              fit: BoxFit.fitWidth,
                             ),
                           ),
                         ),
-
                         //Text about House in ResultList
                         Container(
                           child: Padding(
@@ -118,19 +116,19 @@ class SearchSheet extends StatelessWidget {
               //padding: EdgeInsets.symmetric(vertical: 8.0),
               child: Material(//test
                 color: Colors.white,
-                elevation: 5.0,
+                elevation: 6.0,
                 borderRadius: BorderRadius.circular(3.0),
                 shadowColor: Colors.teal,
                 child: Column(
                   children: <Widget>[
                     Padding(
                       //padding: const EdgeInsets.all(10.0),
-                      padding: EdgeInsets.symmetric(horizontal: 0.0),
+                      padding: EdgeInsets.only(left: 7.0, top: 7.0),
                       child: Row(
                         //mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Container(
-                            width: MediaQuery.of(context).size.width / 1.5,
+                            width: MediaQuery.of(context).size.width / 1.4,
                             height: 200,
                             decoration: new BoxDecoration(
                               image: new DecorationImage(
@@ -146,7 +144,7 @@ class SearchSheet extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            width: MediaQuery.of(context).size.width / 3.4,
+                            width: MediaQuery.of(context).size.width / 4.5,
                             height: 200.0,
                             color: Colors.white,
                             child: Column(
@@ -157,7 +155,7 @@ class SearchSheet extends StatelessWidget {
                                     padding: const EdgeInsets.all(8.0),
                                     child: Text(house.housePriceTrend,
                                         style: TextStyle(
-                                            color: Colors.black, fontSize: 24.0)),
+                                            color: Colors.black, fontSize: 20.0)),
                                   ),
                                 ),
                                 Container(
@@ -165,7 +163,7 @@ class SearchSheet extends StatelessWidget {
                                     padding: const EdgeInsets.all(8.0),
                                     child: Text('Price Trend',
                                         style: TextStyle(
-                                            color: Color(0xff5c5c5c), fontSize: 14.0)),
+                                            color: Color(0xff5c5c5c), fontSize: 11.0)),
                                   ),
                                 ),
                                 Container(
@@ -173,7 +171,7 @@ class SearchSheet extends StatelessWidget {
                                     padding: const EdgeInsets.all(8.0),
                                     child: Text(house.houseRentTrend,
                                         style: TextStyle(
-                                            color: Colors.black, fontSize: 24.0)),
+                                            color: Colors.black, fontSize: 20.0)),
                                   ),
                                 ),
                                 Container(
@@ -181,7 +179,7 @@ class SearchSheet extends StatelessWidget {
                                     padding: const EdgeInsets.all(8.0),
                                     child: Text('Rent Trend',
                                         style: TextStyle(
-                                            color: Color(0xff5c5c5c), fontSize: 14.0)),
+                                            color: Color(0xff5c5c5c), fontSize: 11.0)),
                                   ),
                                 ),
                               ],
