@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'bars/buttomBars.dart';
 import 'immoObjects/house.dart';
-import 'navigationsBars/navigationsBars.dart';
+
 
 class SearchSheet extends StatelessWidget {
   @override
@@ -216,7 +217,7 @@ class SearchSheet extends StatelessWidget {
                 ),
               ],
           ),
-          bottomNavigationBar: NavigationBarWithoutCurve(),
+          bottomNavigationBar: NavigationBarWithoutCurves(),
         ),
       ),
     );
