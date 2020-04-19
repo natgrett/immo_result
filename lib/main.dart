@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:immo_result/main.dart';
-import 'package:immo_result/resultsListScreen.dart';
 import 'package:immo_result/searchScreen.dart';
-import 'package:immo_result/searchSheet.dart';
+import 'package:immo_result/resultsListScreen.dart';
 import 'detailsScreen.dart';
 import 'immoObjects/house.dart';
 import 'immoObjects/houseDetails.dart';

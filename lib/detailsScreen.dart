@@ -1,14 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'immoObjects/immoObjects.dart';
+import 'immoObjects/house.dart';
+
 
 //////////////////////////////////////////////////////3.Third Screen (Details) - Pilot Object//////////////////////////////
 
 class DetailsScreen extends StatelessWidget {
-  final SingleObject object;
+  final House house;
 
-  DetailsScreen({this.object});
+  DetailsScreen({this.house});
 
   @override
   Widget build(BuildContext context) {
