@@ -132,7 +132,7 @@ class SearchSheet extends StatelessWidget {
                             decoration: new BoxDecoration(
                               image: new DecorationImage(
                                 image: AssetImage(house.houseImage),
-                                fit: BoxFit.cover,
+                                fit: BoxFit.fill,
                               ),
                             ),
                             child: InkWell(
@@ -280,6 +280,7 @@ class SearchSheet extends StatelessWidget {
                   }),
             ],
             bottom: TabBar(
+              indicatorColor: Color(0xff00ffd0),
               tabs: [
                 Tab(
                   child: Text('ALL',
