@@ -55,6 +55,10 @@ flutter:
     - assets/map/example.png
     - assets/map/example2.png
     - assets/map/example3.png
+    - assets/premium_objects/1.png
+    - assets/premium_objects/2.png
+    - assets/premium_objects/3.png
+    - assets/premium_objects/4.png
 
 
 

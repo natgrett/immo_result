@@ -27,6 +27,7 @@ class immoApp extends StatelessWidget {
     final path = settings.name.split('/');
     final houseId = path[1];
 
+
     House house =
         listOfHouses.firstWhere((myroute) => myroute.houseId == houseId);
     return MaterialPageRoute(

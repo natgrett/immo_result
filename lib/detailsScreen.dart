@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'immoObjects/house.dart';
 
 
@@ -21,7 +20,7 @@ class DetailsScreen extends StatelessWidget {
         height: MediaQuery.of(context).size.height / 2,
         decoration: new BoxDecoration(
           image: new DecorationImage(
-            fit: BoxFit.fill,
+            fit: BoxFit.cover,
             image: AssetImage(house.houseImage),
           ),
         ),
@@ -102,52 +101,6 @@ class DetailsScreen extends StatelessWidget {
                         )
                     ),
                   ),
-
-                  /*
-
-                  Padding(
-                    padding: const EdgeInsets.only(left:8.0),
-                    child: Material(
-                        color: Colors.amber,
-                        shape: CircleBorder(),
-                        child: Padding
-                          (
-                          padding: EdgeInsets.all(8.0),
-                          child: Icon(FontAwesomeIcons.github,
-                              color: Colors.white,
-                              size: 35.0),
-                        )
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left:8.0),
-                    child: Material(
-                        color: Colors.amber,
-                        shape: CircleBorder(),
-                        child: Padding
-                          (
-                          padding: EdgeInsets.all(8.0),
-                          child: Icon(FontAwesomeIcons.twitter,
-                              color: Colors.white,
-                              size: 35.0),
-                        )
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left:8.0),
-                    child: Material(
-                        color: Colors.amber,
-                        shape: CircleBorder(),
-                        child: Padding
-                          (
-                          padding: EdgeInsets.all(8.0),
-                          child: Icon(FontAwesomeIcons.linkedin,
-                              color: Colors.white,
-                              size: 35.0),
-                        )
-                    ),
-                  ),
-                  */
                 ],
               ),
             ),

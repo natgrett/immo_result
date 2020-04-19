@@ -132,7 +132,7 @@ class SearchSheet extends StatelessWidget {
                             decoration: new BoxDecoration(
                               image: new DecorationImage(
                                 image: AssetImage(house.houseImage),
-                                fit: BoxFit.fill,
+                                fit: BoxFit.cover,
                               ),
                             ),
                             child: InkWell(
@@ -194,7 +194,7 @@ class SearchSheet extends StatelessWidget {
           ),
         );
 
-    //HERE Design With FULL SIZE Photo of Hause
+    //HERE Design With FULL SIZE Photo of House
     HousesList(House house) => Hero(
           tag: house.houseId,
           child: Container(
@@ -284,12 +284,13 @@ class SearchSheet extends StatelessWidget {
                 Tab(
                   child: Text('ALL',
                       style: TextStyle(
-                          fontFamily: 'MakeItSans', color: Colors.black)),
+                          fontWeight: FontWeight.bold, fontFamily: 'MakeItSans', color: Colors.black)),
                 ),
                 Tab(
-                  child: Text('FAVORITES',
+                  child: Text('PREMIUM',
+
                       style: TextStyle(
-                          fontFamily: 'MakeItSans', color: Colors.black)),
+                          fontWeight: FontWeight.bold, fontFamily: 'MakeItSans', color: Colors.black,)),
                 ),
               ],
             ),
@@ -305,9 +306,11 @@ class SearchSheet extends StatelessWidget {
                 ),
               ),
               Container(
-                child: Padding(
-                  padding: EdgeInsets.only(top: 16.0, left: 8),
-                  child: HouseGrid,
+                child: ListView(
+                  scrollDirection: Axis.vertical,
+                  children: listOfHousesPremium
+                      .map((house) => HauseListHalfSize(house))
+                      .toList(), // HauseListHalfSize OR HousesList
                 ),
               ),
             ],
