@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:immo_result/immoObjects/house.dart';
 
-class HauseDetails extends StatelessWidget {
+class HouseDetails extends StatelessWidget {
   final House house;
 
-  HauseDetails(this.house);
+  HouseDetails(this.house);
 
   @override
   Widget build(BuildContext context) {
