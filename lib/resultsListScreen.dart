@@ -319,7 +319,7 @@ class SearchSheet extends StatelessWidget {
                 child: ListView(
                   scrollDirection: Axis.vertical,
                   children: listOfHousesPremium
-                      .map((house) => HauseListHalfSize(house))
+                      .map((house) => HousesList(house))
                       .toList(), // HauseListHalfSize OR HousesList
                 ),
               ),
