@@ -18,30 +18,85 @@ class SearchScreen extends StatelessWidget {
         backgroundColor: Color(0xff66ffe3),
       ),
       body: Center(
-        child: GestureDetector(
-          onTap: () {
-            Navigator.of(context).push(_createRoute());
-          },
-          child: Container(
-            child: Icon(
-              Icons.search,
-              size: 60.0,
-              color: Colors.white,
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(50.0),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(_createRoute1());
+                },
+                child: Container(
+                  child: Center(
+
+                    child: Text(
+                      'ease',
+                      style: TextStyle(color: Colors.black, fontSize: 16.0),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Color(0xff00ffd0),
+                  ),
+                  width: 125.0,
+                  height: 125.0,
+                ),
+              ),
             ),
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Color(0xff00ffd0),
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(_createRoute2());
+              },
+              child: Container(
+                child: Center(
+
+                  child: Text(
+                    'fastOutSlowIn',
+                    style: TextStyle(color: Colors.black, fontSize: 16.0),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Color(0xff00ffd0),
+                ),
+                width: 125.0,
+                height: 125.0,
+              ),
             ),
-            width: 100.0,
-            height: 100.0,
-          ),
+            Padding(
+              padding: const EdgeInsets.all(50.0),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(_createRoute4());
+                },
+                child: Container(
+                  child: Center(
+
+                    child: Text(
+                      'Align()',
+                      style: TextStyle(color: Colors.black, fontSize: 16.0),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Color(0xff00ffd0),
+                  ),
+                  width: 125.0,
+                  height: 125.0,
+                ),
+              ),),
+          ],
         ),
       ),
     );
   }
 }
 
-Route _createRoute() {
+
+Route _createRoute1() {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => SearchSheet(),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
@@ -49,26 +104,99 @@ Route _createRoute() {
       var end = Offset.zero;
       var curve = Curves.ease;
 
-      //Example1, using CurveTween
+      //Example0, using CurveTween
       var curveTween = CurveTween(curve: curve);
       var tween1 = Tween(begin: begin, end: end).chain(curveTween);
-      var slideTransition1 = SlideTransition(
+      var slideTransition0 = SlideTransition(
         position: animation.drive(tween1),
         child: child,
       );
-
-      //Example2, using CurvedAnimation
+      //Example1, using CurvedAnimation - Curves.ease;
       var curvedAnimation = CurvedAnimation(
         parent: animation,
         curve: curve,
       );
       var tween2 = Tween(begin: begin, end: end);
-      var slideTransition2 = SlideTransition(
+      var slideTransition1 = SlideTransition(
         position: tween2.animate(curvedAnimation),
         child: child,
       );
 
-      return slideTransition2;
+      return slideTransition1;
     },
   );
 }
+
+
+
+Route _createRoute2() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => SearchSheet(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+
+
+      //Example3, using CurvedAnimation - Curves.fastOutSlowIn
+      var sliderTransition3 = ScaleTransition(
+        scale: Tween<double>(
+          begin: 0.0,
+          end: 1.0,
+        ).animate(
+          CurvedAnimation(
+            parent: animation,
+            curve: Curves.fastOutSlowIn,
+          ),
+        ),
+        child: child,
+      );
+      return sliderTransition3;
+    },
+  );
+}
+
+
+Route _createRoute3() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => SearchSheet(),
+    transitionDuration: Duration(seconds: 1),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      //Example3, using CurvedAnimation - Curves.fastOutSlowIn
+      var sliderTransition3 =  RotationTransition(
+        turns: Tween<double>(
+          begin: 0.0,
+          end: 1.0,
+        ).animate(
+          CurvedAnimation(
+            parent: animation,
+            curve: Curves.linear,
+          ),
+        ),
+        child: child,
+      );
+      return sliderTransition3;
+    },
+  );
+}
+
+
+Route _createRoute4() {
+  return PageRouteBuilder(
+    pageBuilder: (
+        BuildContext context,
+        Animation<double> animation,
+        Animation<double> secondaryAnimation,
+        ) => SearchSheet(),
+    transitionsBuilder: (
+        BuildContext context,
+        Animation<double> animation,
+        Animation<double> secondaryAnimation,
+        Widget child,
+        ) =>
+        Align(
+          child: SizeTransition(
+            sizeFactor: animation,
+            child: child,
+          ),
+        ),
+  );
+}
+
