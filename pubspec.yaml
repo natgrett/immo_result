@@ -12,8 +12,6 @@ dependencies:
 
 
   curved_navigation_bar:
-
-
   font_awesome_flutter: ^8.2.0
 
   # The following adds the Cupertino Icons font to your application.
@@ -52,13 +50,6 @@ flutter:
     - assets/objects/4.png
     - assets/objects/5.png
     - assets/objects/6.png
-    - assets/map/example.png
-    - assets/map/example2.png
-    - assets/map/example3.png
-    - assets/premium_objects/1.png
-    - assets/premium_objects/2.png
-    - assets/premium_objects/3.png
-    - assets/premium_objects/4.png
 
 
 
