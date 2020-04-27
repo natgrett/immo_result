@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:immo_result/realEstateObjects/house.dart';
 import 'package:immo_result/slederDirection.dart';
 import 'package:immo_result/viewStates.dart';
@@ -21,6 +22,8 @@ class DetailsScreen extends StatefulWidget {
 
 class _DetailsScreenState extends State<DetailsScreen>
     with TickerProviderStateMixin {
+  final String arrowLeftIcon =
+      'assets/icons/is24_system/is24_system_48px_arrow_left.svg';
   int currentIndex = 0;
   int offstageIndex = 0;
   SlideDirection slideDirection = SlideDirection.none;
@@ -137,28 +140,32 @@ class _DetailsScreenState extends State<DetailsScreen>
   @override
   Widget build(BuildContext context) {
     contentSpacing = MediaQuery.of(context).size.width;
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white10,
-        elevation: 0.0,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.black,
+
+    return
+      Scaffold(
+        appBar:  AppBar(
+          leading: IconButton(
+            icon: Container(
+              height: 24.0,
+              width: 24.0,
+              child: SvgPicture.asset(
+                arrowLeftIcon,
+                semanticsLabel: 'Arrow_Left Icon',
+              ),
+            ),
+            onPressed: () => Navigator.of(context).pop(true),
           ),
-          onPressed: () {
-            Navigator.of(context).pop(true);
-          },
+          backgroundColor: Colors.white,
         ),
-      ),
-      body: Stack(
-        children: <Widget>[
-          DetailContent(
-            house: widget.housesList[currentIndex],
-          ),
-        ],
-      ),
-      bottomNavigationBar: NavigationBarWithoutCurves(),
+        body: Stack(
+          children: <Widget>[
+            DetailContent(
+              house: widget.housesList[currentIndex],
+            ),
+          ],
+        ),
+        bottomNavigationBar: NavigationBarWithoutCurves(),
+
     );
   }
 }
@@ -183,7 +190,7 @@ class DetailContent extends StatelessWidget {
             overflow: Overflow.visible,
             children: <Widget>[
               Positioned(
-                top: 20.0,
+                top: 0.0,
                 left: 0,
                 child: Hero(
                   tag: '${house.houseId}-img',

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:immo_result/components/title.dart';
 import 'package:immo_result/realEstateObjects/house.dart';
 import '../viewStates.dart';
+
+//'asset/icons/is24_system/is24_system_48px_heart_favorite.svg'
 
 //Main Structure of HouseBanner in helpImages/classHouseBanner.png
 
@@ -17,6 +20,9 @@ class HouseBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String heartIcon =
+        'assets/icons/is24_system/is24_system_48px_heart_favorite.svg';
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Material(
@@ -28,9 +34,11 @@ class HouseBanner extends StatelessWidget {
           children: <Widget>[
             Padding(
               padding: EdgeInsets.only(left: 7.0, top: 7.0),
-              child: Row( //1
+              child: Row(
+                //1
                 children: <Widget>[
-                  GestureDetector( //1.1
+                  GestureDetector(
+                    //1.1
                     onTap: () {
                       if (onSelected != null) {
                         onSelected(house);
@@ -50,14 +58,16 @@ class HouseBanner extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Container( //1.2
+                  Container(
+                    //1.2
                     width: MediaQuery.of(context).size.width / 4.5,
                     height: 200.0,
                     color: Colors.white,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Container(//1.2.1
+                        Container(
+                          //1.2.1
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(house.housePriceTrend,
@@ -65,7 +75,8 @@ class HouseBanner extends StatelessWidget {
                                     color: Colors.black, fontSize: 20.0)),
                           ),
                         ),
-                        Container(//1.2.2
+                        Container(
+                          //1.2.2
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text('Price Trend',
@@ -73,7 +84,8 @@ class HouseBanner extends StatelessWidget {
                                     color: Color(0xff5c5c5c), fontSize: 11.0)),
                           ),
                         ),
-                        Container(//1.2.3
+                        Container(
+                          //1.2.3
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(house.houseRentTrend,
@@ -81,7 +93,8 @@ class HouseBanner extends StatelessWidget {
                                     color: Colors.black, fontSize: 20.0)),
                           ),
                         ),
-                        Container(//1.2.4
+                        Container(
+                          //1.2.4
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text('Rent Trend',
@@ -95,11 +108,12 @@ class HouseBanner extends StatelessWidget {
                 ],
               ),
             ),
-
-            Row(//2
+            Row(
+              //2
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Container(// 2.1
+                Container(
+                  // 2.1
                   width: MediaQuery.of(context).size.width / 3 - 15,
                   padding: EdgeInsets.symmetric(vertical: 10),
                   child: Hero(
@@ -131,8 +145,8 @@ class HouseBanner extends StatelessWidget {
                     ),
                   ),
                 ),
-
-                Container( //2.2
+                Container(
+                  //2.2
                   width: MediaQuery.of(context).size.width / 3 - 15,
                   padding: EdgeInsets.symmetric(vertical: 10),
                   child: Hero(
@@ -162,7 +176,8 @@ class HouseBanner extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(//2.3
+                Container(
+                  //2.3
                   width: MediaQuery.of(context).size.width / 3 - 15,
                   padding: EdgeInsets.symmetric(vertical: 10),
                   child: Wrap(
@@ -198,10 +213,18 @@ class HouseBanner extends StatelessWidget {
                           largeFontSize: 18.0,
                         ),
                       ),
-                      Padding( //2.4
+                      Padding(
+                        //2.4
                         padding: const EdgeInsets.only(left: 28.0),
-                        child: Icon(
-                          Icons.favorite_border,
+                        child: Container(
+                          width: 23.0,
+                          height: 23.0,
+                          child: Center(
+                            child: SvgPicture.asset(
+                              heartIcon,
+                              semanticsLabel: 'Heart Icon',
+                            ),
+                          ),
                         ),
                       ),
                     ],
@@ -209,10 +232,8 @@ class HouseBanner extends StatelessWidget {
                 ),
               ],
             ),
-
-
-
-            Row(//3
+            Row(
+              //3
               children: <Widget>[
                 Padding(
                     padding: EdgeInsets.only(left: 16.0, top: 0.0, bottom: 8.0),

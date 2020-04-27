@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:immo_result/pageRouteGenerator.dart';
 import 'package:immo_result/realEstateObjects/house.dart';
 import 'components/bottomBars.dart';
 import 'components/houseBanner.dart';
 import 'detailsScreen.dart';
-
 
 //2. Second Screen
 class ResultScreen extends StatefulWidget {
@@ -17,6 +17,9 @@ class _ResultScreenState extends State<ResultScreen>
   AnimationController _animationController;
   bool returnFromDetailPage = false;
   ValueNotifier<bool> stateNotifier;
+  final String arrowLeftIcon =
+      'assets/icons/is24_system/is24_system_48px_arrow_left.svg';
+  final String sortIcon = 'assets/icons/Aditional_icons_48px_SVG/additional_icons_48px_sort.svg';
 
   @override
   void initState() {
@@ -57,80 +60,95 @@ class _ResultScreenState extends State<ResultScreen>
     }).toList();
   }
 
-
   void onSelected(House house) async {
     _animationController.forward(from: 0.0);
     stateNotifier.value = await Navigator.of(context).push(
       PageRouteGenerator(
           //fullscreenDialog: true,
           builder: (context) {
-            return DetailsScreen(
-              housesList: listOfHouses,
-              selectedIndex: listOfHouses.indexOf(house),
-            );
-          }),
+        return DetailsScreen(
+          housesList: listOfHouses,
+          selectedIndex: listOfHouses.indexOf(house),
+        );
+      }),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-
-    final appBarWithSearchField = AppBar(
-      leading: IconButton(
-        icon: Icon(Icons.arrow_back, color: Color(0xff333333)),
-        onPressed: () => Navigator.pop(context),
-      ),
-      backgroundColor: Colors.white,
-      title: Container(
-          margin: EdgeInsets.symmetric(horizontal: 40.0, vertical: 5.0),
-          decoration: BoxDecoration(
-            color: Color(0xffccfff6),
-            borderRadius: BorderRadius.all(Radius.circular(10.0)),
+    final appBarWithSearchField = new PreferredSize(
+      preferredSize: Size.fromHeight(56.0),
+      child: AppBar(
+        leading: IconButton(
+          icon: Container(
+            height: 24.0,
+            width: 24.0,
+            child: SvgPicture.asset(
+            arrowLeftIcon,
+            semanticsLabel: 'Arrow_Left Icon',
           ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Expanded(
-                flex: 1,
-                child: TextFormField(
-                  textAlign: TextAlign.center,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "🔍  Adjust Search",
-                    hintStyle: TextStyle(color: Color(0xff333333)),
-                    //icon: Icon(Icons.search, color: Color(0xff333333)),
+          ),
+          onPressed: () => Navigator.pop(context),
+        ),
+        backgroundColor: Colors.white,
+        title: Container(
+            margin: EdgeInsets.symmetric(horizontal: 40.0, vertical: 5.0),
+            decoration: BoxDecoration(
+              color: Color(0xffccfff6),
+              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Expanded(
+                  flex: 1,
+                  child: TextFormField(
+                    textAlign: TextAlign.center,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: "🔍  Adjust Search",
+                      hintStyle: TextStyle(color: Color(0xff333333)),
+                      //icon: Icon(Icons.search, color: Color(0xff333333)),
+                    ),
                   ),
                 ),
+              ],
+            )),
+        actions: <Widget>[
+          IconButton(
+            icon: Container(
+              height: 24.0,
+              width: 24.0,
+              child: SvgPicture.asset(
+                sortIcon,
+                semanticsLabel: 'Sort Icon',
               ),
-            ],
-          )),
-      actions: <Widget>[
-        IconButton(
-            icon: Icon(Icons.swap_vert, color: Colors.black),
-            onPressed: () {
-              //
-            }),
-      ],
-    );
-
-    return Scaffold(
-      appBar: appBarWithSearchField,
-      body: ListView(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.symmetric(
-              vertical: 12.0,
-              horizontal: 24.0,
             ),
+            onPressed: () {},
           ),
-          Column(
-            children: _buildDestinationBanners(),
-          )
         ],
       ),
-      bottomNavigationBar: NavigationBarWithoutCurves(),
+
     );
+
+    return
+       Scaffold(
+        appBar: appBarWithSearchField,
+        body: ListView(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.symmetric(
+                vertical: 12.0,
+                horizontal: 24.0,
+              ),
+            ),
+            Column(
+              children: _buildDestinationBanners(),
+            )
+          ],
+        ),
+        bottomNavigationBar: NavigationBarWithoutCurves(),
+      );
+
   }
 }
-
-
